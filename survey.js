@@ -1,45 +1,44 @@
+//worked with Dasha Frumovitch to create this project 
+
 const readline = require('readline');
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-let answers=[];
+let answers={};
+const name = 'What\'s your name? (Nicknames are also acceptable)';
+const activity = 'What\'s an activity you like doing?';
+const music = 'What do you listen to while doing that?';
+const meal = 'Which meal is your favourite (eg: dinner, brunch, etc.) ';
+const food = 'What\'s your favourite thing to eat for that meal?';
+const sport = 'Which sport is your absolute favourite?';
+const superpower = 'What is your superpower? In a few words, tell us what you are amazing at!';
 
-rl.question('What\'s your name? Nicknames are also acceptable :) ', (answer) => {
-  answers.push(answer);
+
+console.log('Welcome to the profile Generator')
+rl.question(name, (answer) => {
+  answers.name =answer;
   // console.log(answers);
   //console.log(`Thank you: ${answer}`);
-  rl.question('What\'s an activity you like doing? ', (answer) => {
-    //console.log(`Thank you: ${answer}`);
-    answers.push(answer);
-    // console.log(answers);
-    rl.question('What do you listen to while you are doing that? ', (answer) => {
-      //console.log(`Thank you: ${answer}`);
-      answers.push(answer);
-      // console.log(answers);
-      rl.question('Which meal is your favourite? (breakfast, dinner, brunch) ', (answer) => {
-        //console.log(`Thank you: ${answer}`);
-        answers.push(answer);
-        // console.log(answers);     
-        rl.question('What\'s your favourite thing to eat for that meal? ', (answer) => {
-        //console.log(`Thank you: ${answer}`);
-        answers.push(answer);
-        // console.log(answers);
-          rl.question('Which sport is your absolute favourite? ', (answer) => {
-            //console.log(`Thank you: ${answer}`);
-            answers.push(answer);
-            // console.log(answers);
-            rl.question('What is your super power? ', (answer) => {
-              //console.log(`Thank you: ${answer}`);
-              answers.push(answer);
-              console.log(answers[0], 'loves listening to', answers[2], 'while', answers[0] +',', 'devouring', answers[4], 'for', answers[3] + ',', 'prefers', answers[5], 'over any other sport and is amazing at', answers[6]+'.');
+  rl.question(activity, (answer) => {
+    answers.activity = answer;
+    rl.question(music, (answer) => {
+      answers.music = answer;
+      rl.question(meal, (answer) => {
+        answers.meal = answer;    
+        rl.question(food, (answer) => {
+          answers.food = answer;
+          rl.question(sport, (answer) => {
+            answers.sport = answer;
+            rl.question(superpower, (answer) => {
+              answers.superpower = answer;
+              console.log(answers.name, 'loves listening to', answers.music, 'while', answers.activity +',', 'devouring', answers.food, 'for', answers.meal + ',', 'prefers', answers.sport, 'over any other sport and is amazing at', answers.superpower +'.');
               rl.close();
-              // console.log(answers);
             });
           });
         });
       });
     });
   });
-}); 
+});
